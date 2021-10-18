@@ -18,13 +18,15 @@ export default {
     },
     data(){
         return{
-            rightNum:0
+            rightNum:0,
+            
         }
     },
     methods:{
         swi(index){
             this.rightNum = index 
-        }   
+            this.$emit("tabswitch",index)
+        }    
     }
 
 }

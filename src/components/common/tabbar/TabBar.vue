@@ -23,6 +23,7 @@
     background: #eee;
 
     position: fixed;
+    z-index: 99;
     bottom: 0;
     left: 0;
     right: 0;
