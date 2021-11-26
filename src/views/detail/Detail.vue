@@ -117,7 +117,7 @@ export default {
       produce.image = this.topImage[0]
       produce.title = this.goods.title
       produce.desc = this.goods.desc
-      produce.price = this.goods.newPrice
+      produce.price = this.goods.oldPrice
       produce.iid = this.iid
       
       this.$store.dispatch('addCart',produce)

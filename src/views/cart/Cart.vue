@@ -1,25 +1,33 @@
 <template>
   <div class="cart">
-    <nav-bar class="cartNav"><div slot="center">购物车</div></nav-bar>
+    <nav-bar class="cartNav"><div slot="center">购物车({{cartListLength}})</div></nav-bar>
     <scroll class="cart-scroll">
       <cart-list :cartInfo='$store.state.cartList'></cart-list>
-      <!-- <h2>{{$store.state.cartList}}</h2> -->
+      <h2>{{$store.state.cartList}}</h2>
     </scroll>
-  
+    <cart-bottom-bar></cart-bottom-bar>
   </div>
 </template>
 
 <script>
   import NavBar from '../../components/common/navbar/NavBar.vue'
   import cartList from './childComps/cartList.vue'
+  import CartBottomBar from './childComps/CartBottomBar.vue'
 
+  import {mapGetters} from 'vuex'
   import Scroll from '../../components/content/scroll/Scroll.vue'
   export default {
     name: "Cart",
     components:{
       NavBar,
       Scroll,
-      cartList
+      cartList,
+      CartBottomBar
+    },
+    computed:{
+      cartListLength(){
+        return this.$store.state.cartList.length
+      }
     }
   }
 </script>
@@ -28,7 +36,6 @@
   .cart{
     height: 100vh;
     overflow: auto;
-    
   }
   .cartNav{
     background-color: pink;

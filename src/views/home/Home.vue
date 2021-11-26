@@ -116,6 +116,7 @@ export default {
     },
     pullingup(){
       this.getHomeGoods(this.goodstype)
+      this.$refs.content.refresh()
     },
     /*
     网络请求相关
@@ -129,6 +130,7 @@ export default {
     });
     },
     getHomeGoods(type){
+      
       let page = this.goods[type].page + 1;
       getHomeGoods(type,page).then(res =>{
         this.goods[type].list.push(...res.data.list)

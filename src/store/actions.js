@@ -11,4 +11,5 @@ export default{
       context.commit('addToCart',payload)
     }
   }
+
 }

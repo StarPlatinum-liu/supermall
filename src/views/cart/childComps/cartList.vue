@@ -24,8 +24,9 @@ export default {
 
 <style scoped>
 .list{
-  height: 20vh;
-  width: 100vh;
+  height: 18vh;
+  width: 100%;
+  overflow: hidden;
   
   border-bottom: 1px solid rgb(187, 187, 187);
 
