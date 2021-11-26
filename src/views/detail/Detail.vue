@@ -3,7 +3,6 @@
     <detail-nav-bar :option="option"></detail-nav-bar>  
     <scroll class="detail-scroll">
       <detail-swiper :topImage='topImage'></detail-swiper>
-      <!-- <div>{{$store.state.cartList}}</div> -->
       <ul>
         <li>''</li>
         <li>''</li>
@@ -58,7 +57,7 @@
       </ul>
     </scroll>
 
-    <detail-bottom-bar @shopClick='shopClick'></detail-bottom-bar>
+    <detail-bottom-bar @shopClick='shopClick'></detail-bottom-bar> 
 
   </div>
 </template>
