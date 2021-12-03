@@ -6,5 +6,8 @@ export default{
     payload.checked = false
     state.cartList.push(payload)
   },
+  // isCheck(state,payload){
+  //   payload.checked = !payload.checked
+  // }
 
 }

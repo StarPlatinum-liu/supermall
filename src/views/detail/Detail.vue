@@ -56,8 +56,9 @@
         <li>''</li>
       </ul>
     </scroll>
-
+    <!-- <toast :message = message></toast> -->
     <detail-bottom-bar @shopClick='shopClick'></detail-bottom-bar> 
+    
 
   </div>
 </template>
@@ -67,8 +68,10 @@ import DetailNavBar from './childComps/DetailNavBar.vue';
 import DetailSwiper from './childComps/DetailSwiper.vue'
 import DetailBottomBar from './childComps/DetailBottomBar.vue'
 import Scroll from '../../components/content/scroll/Scroll.vue'
+import Toast from '../../components/common/toast'
 
 import{getDetail,Goods,Shop} from '../../network/detail'
+
 export default {
   name:'Detail',
   components:{
@@ -91,7 +94,8 @@ export default {
       recommends:[],
       themeTopY:null,
       currentIndex:0,
-      inShowBackTop:false
+      inShowBackTop:false,
+      // message:''
       
     }
   },
@@ -119,8 +123,12 @@ export default {
       produce.price = this.goods.oldPrice
       produce.iid = this.iid
       
-      this.$store.dispatch('addCart',produce)
+      this.$store.dispatch('addCart',produce).then(res =>{
+        // this.message = res
+        this.$toast.show(res,1500)
+      })
       // alert('加入购物车成功')
+
     }
   }
 }
@@ -140,6 +148,9 @@ export default {
 .detail-scroll{
   height: calc(100vh - 44px - 45px);
   overflow: hidden;
+}
+li{
+  color: white;
 }
 
 </style>

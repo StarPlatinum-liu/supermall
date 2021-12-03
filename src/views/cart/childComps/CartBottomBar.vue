@@ -1,11 +1,11 @@
 <template>
   <div class="cartbottombar">
     <div class="left">
-      <button class="button" :class="{isSellectAll:sellectAll}"></button>
+      <button class="button" :class="{isSellectAll:sellectAll}" @click="comput"></button>
       <div>全选</div>
     </div>
     <div class="center">
-      总计{{}}
+      总计:￥{{totalPrice}}
     </div>
     <div class="right">
       去结算
@@ -14,15 +14,48 @@
 </template>
 
 <script>
+
 export default {
   name:'cartbottombar',
   data(){
     return{
-      sellectAll:false
+      // sellectAll:false
+    }
+  },
+  props:{
+    item:{
+      type:Object,
+      default(){
+        return {}
+      }
+    }
+  },
+  computed:{
+    totalPrice(){
+      let sum = this.$store.state.cartList.filter((item)=>{
+        return item.checked
+      }).reduce((previousValue,item)=>{
+        return previousValue + item.price.slice(1) * item.count
+      },0)
+      return sum
+    },
+    sellectAll(){
+      if(this.$store.state.cartList.length == 0) return false
+      return this.$store.state.cartList.every(i => i.checked)
     }
   },
   methods:{
-    
+    comput(){
+      if(this.$store.state.cartList.every(i => i.checked)){
+        this.$store.state.cartList.forEach(i => {
+          i.checked = false
+        })
+      }else{
+        this.$store.state.cartList.forEach(i => {
+        i.checked = true
+        })
+      }
+    }
   }
 }
 </script>
@@ -41,6 +74,7 @@ export default {
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-grow: 1;
   }
   .center{
@@ -61,6 +95,9 @@ export default {
     border-radius: 50%;
   }
   .isSellectAll{
+    background-color: pink;
+  }
+  .checked{
     background-color: pink;
   }
 </style>

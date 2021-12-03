@@ -3,7 +3,7 @@
     <nav-bar class="cartNav"><div slot="center">购物车({{cartListLength}})</div></nav-bar>
     <scroll class="cart-scroll">
       <cart-list :cartInfo='$store.state.cartList'></cart-list>
-      <h2>{{$store.state.cartList}}</h2>
+      <!-- <h2>{{$store.state.cartList}}</h2> -->
     </scroll>
     <cart-bottom-bar></cart-bottom-bar>
   </div>

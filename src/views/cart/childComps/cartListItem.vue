@@ -1,7 +1,7 @@
 <template>
   <div class="cartlistitem">
     <div class="left">
-      <button @click="change" :class="{checked:check}"></button>
+      <button @click="change" :class="{checked:item.checked}"></button>
     </div>
     <div class="center">
       <img :src="item.image" alt="">
@@ -35,7 +35,8 @@ export default {
   },
   methods:{
     change(){
-      this.check = !this.check
+      this.item.checked = !this.item.checked
+      // console.log(this.item.checked); 显示点击状态
     }
   }
 }
